@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './models/category.dart';
 import './models/meal.dart';
 
-const DUMMY_CATEGORIES = const [
+const dummyCategories = const [
   Category(
     id: 'c1',
     title: 'Italian',
@@ -149,7 +149,7 @@ const dummyMeals = const [
     isGlutenFree: false,
     isVegan: false,
     isVegetarian: false,
-    isLactoseFree: true,
+    isLactoseFree: true, 
   ),
   Meal(
     id: 'm4',
