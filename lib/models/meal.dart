@@ -23,11 +23,11 @@ class Meal {
   final Complexity complexity;
   final Affordability affordability;
   final bool isGLutenFree;
-  final bool isLactose;
+  final bool isLactoseFree;
   final bool isVegan;
-  final bool isVegeterian;
+  final bool isVegetarian;
 
-  Meal(
+  const Meal(
       {@required this.id,
       @required this.categories,
       @required this.mealTitle,
@@ -38,7 +38,7 @@ class Meal {
       @required this.complexity,
       @required this.affordability,
       @required this.isGLutenFree,
-      @required this.isLactose,
+      @required this.isLactoseFree,
       @required this.isVegan,
-      @required this.isVegeterian});
+      @required this.isVegetarian, bool isGlutenFree});
 }
