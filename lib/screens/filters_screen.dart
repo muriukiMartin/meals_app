@@ -5,15 +5,24 @@ class FiltersScreen extends StatefulWidget {
   // const FilterScreen({ Key? key }) : super(key: key);
   static const routeName = '/filters';
 
+  final Function saveFilters;
+  FiltersScreen(this.saveFilters);
+
   @override
   State<FiltersScreen> createState() => _FiltersScreenState();
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  var _glutenFree = false;
-  var _vegetarian = false;
-  var _vegan = false;
-  var _lactoseFree = false;
+  bool _glutenFree = false;
+  bool _vegetarian = false;
+  bool _vegan = false;
+  bool _lactoseFree = false;
+
+  // @override
+  // initState() {
+  //   _glutenFree = widget.cu
+  //   super.initState();
+  // }
 
   Widget _buildSwitchListTile(String title, String description,
       bool currentValue, Function updateValue) {
@@ -30,6 +39,19 @@ class _FiltersScreenState extends State<FiltersScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Filters'),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.save),
+              onPressed: () {
+                final selectedFilters = {
+                  'gluten': _glutenFree,
+                  'lactose': _lactoseFree,
+                  'vegetarian': _vegetarian,
+                  'vegan': _vegan,
+                };
+                widget.saveFilters(selectedFilters);
+              }),
+        ],
       ),
       drawer: MainDrawer(),
       body: Column(
@@ -58,16 +80,14 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     _vegetarian = newValue;
                   });
                 }),
-                _buildSwitchListTile(
-                    'Vegan', 'Only vegan meals', _vegan,
+                _buildSwitchListTile('Vegan', 'Only vegan meals', _vegan,
                     (newValue) {
                   setState(() {
                     _vegan = newValue;
                   });
                 }),
                 _buildSwitchListTile(
-                    'Lactose', 'Lactose Free meals', _lactoseFree,
-                    (newValue) {
+                    'Lactose', 'Lactose Free meals', _lactoseFree, (newValue) {
                   setState(() {
                     _lactoseFree = newValue;
                   });
